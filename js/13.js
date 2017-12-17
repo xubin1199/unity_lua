@@ -74,7 +74,8 @@ getShunzi:function(cards){
     var numbers = fun.classifyCard(cards).numbers;
     var _tempArr = [];// [[],[i ,len ]],i前的 len 个连在一起
     var len = 0;
-    numbers = [numbers[12]].concat(numbers);//将A复制到前面来
+    numbers = numbers.concat([numbers[0]]);//将A复制到前面来
+    console.log(numbers)
     for(var i = 0;i<14;i++){
         if(numbers[i].length == 0){
             len > 4 ? _tempArr.push([i,len]):null;
@@ -300,4 +301,4 @@ sortCards:function(cards){
 
 }
 
-fun.getTonghuashun([46, 44, 35, 18, 33, 2, 34, 31, 13, 48, 22, 32, 20])
+fun.getShunzi([0,1,2,3,4,9,10,11,12,13,14,15,16])
