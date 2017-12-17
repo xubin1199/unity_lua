@@ -79,14 +79,14 @@ getShunzi:function(cards){
     for(var i = 0;i<14;i++){
         if(numbers[i].length == 0){
             len > 4 ? _tempArr.push([i,len]):null;
-            console.log("leni",i,len)
+            //console.log("leni",i,len)
             len = 0;
 
         }else{
             len++;
         }
         if( i==13 && len > 4 ){
-            _tempArr.push([i,len]);
+            _tempArr.push([i+1,len]);
         }
     }
     console.log("temp",_tempArr)
@@ -94,14 +94,13 @@ getShunzi:function(cards){
     for(var i = 0 ;i<_tempArr.length; i++){
         // 第二层，单个连片的;每次取出
         for(var j = 0;j<_tempArr[i][1]-4 ;j++){//每次取5个,j 表示分片起始位置
-            console.log("temp[i]",_tempArr[i])
             var _aa = _tempArr[i][0] - _tempArr[i][1] + j;//记下 numbers 连续五组的起始点
             result.push(fun.combination2([
-                numbers[_aa].map(function(a,i){return ((_aa-1)?(_aa-1):12)+a*13}),
-                numbers[_aa+1].map(function(a,i){return (_aa)+a*13}),
-                numbers[_aa+2].map(function(a,i){return (_aa+1)+a*13}),
-                numbers[_aa+3].map(function(a,i){return (_aa+2)+a*13}),
-                numbers[_aa+4].map(function(a,i){return (_aa+3)+a*13})],5));
+                numbers[_aa].map(function(a,i){return   (_aa)+a*13}),
+                numbers[_aa+1].map(function(a,i){return (_aa+1)+a*13}),
+                numbers[_aa+2].map(function(a,i){return (_aa+2)+a*13}),
+                numbers[_aa+3].map(function(a,i){return (_aa+3)+a*13}),
+                numbers[_aa+4].map(function(a,i){return ((_aa+4==13)?(0):(_aa+4))+a*13})],5));
         }
     }
     return result;
