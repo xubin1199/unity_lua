@@ -76,7 +76,7 @@ getShunzi:function(cards){
     var len = 0;
     numbers = numbers.concat([numbers[0]]);//将A复制到前面来
     console.log(numbers)
-    for(var i = 0;i<14;i++){
+    for(var i = 0;i<numbers.length;i++){
         if(numbers[i].length == 0){
             len > 4 ? _tempArr.push([i,len]):null;
             //console.log("leni",i,len)
@@ -85,7 +85,7 @@ getShunzi:function(cards){
         }else{
             len++;
         }
-        if( i==13 && len > 4 ){
+        if( i==numbers.length-1 && len > 4 ){
             _tempArr.push([i+1,len]);
         }
     }
@@ -100,7 +100,7 @@ getShunzi:function(cards){
                 numbers[_aa+1].map(function(a,i){return (_aa+1)+a*13}),
                 numbers[_aa+2].map(function(a,i){return (_aa+2)+a*13}),
                 numbers[_aa+3].map(function(a,i){return (_aa+3)+a*13}),
-                numbers[_aa+4].map(function(a,i){return ((_aa+4==13)?(0):(_aa+4))+a*13})],5));
+                numbers[_aa+4].map(function(a,i){return ((_aa+4==numbers.length-1)?(0):(_aa+4))+a*13})],5));
         }
     }
     return result;
